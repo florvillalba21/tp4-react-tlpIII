@@ -25,29 +25,11 @@ function App() {
         <button id="btn" onClick={getCards}>Traer cartas</button>
       </div>
 
-      <div className="card-group justify-content-md-center">
-        {/* se recorre la lista de cartas con el formato del componente CardYugioh */}
-        {cards.map((value, index) => {
-          return (
-            <div key={index}>
+      <div className="row justify-content-md-center">
               {/* se provee las cards y el setCards al componente CardYugioh para setear el estado desde alli */}
               <CardContext.Provider value={{ cards, setCards }}>
-
-                <CardYugioh
-                  nameCard={value.name}
-                  race={value.race}
-                  atk={value.atk}
-                  def={value.def}
-                  img={value.card_images[0].image_url}
-                  typeCard={value.type}
-                  descCard={value.desc}
-                  index={index}
-                />
-
+                <CardYugioh/>
               </CardContext.Provider>
-            </div>
-          );
-        })}
       </div>
     </div>
   );
