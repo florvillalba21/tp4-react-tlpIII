@@ -5,6 +5,7 @@ export const CardYugioh = () => {
   //se incluye el contexto de las cartas para utilizarla
   const { cards, setCards } = useContext(CardContext);
 
+  //retorna una card por cada elemento de la lista de cartas
   return cards.map((value, index) => {
     return (
       <div
