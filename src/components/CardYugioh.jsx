@@ -13,9 +13,9 @@ export const CardYugioh = () => {
           <div
             key={index}
             className="card col-md-auto"
-            style={{ width: "18rem", margin: "20px" }}
+            style={{ width: "18rem"}}
           >
-            <img src={value.card_images[0].image_url} />
+            <img src={value.card_images[0].image_url_cropped} />
             <div className="card-body">
               <div>
                 <h5 className="card-title">{value.name}</h5>
@@ -30,7 +30,7 @@ export const CardYugioh = () => {
                 {/* al presionar el boton de eliminar, lo que se setea es un nuevo array sin el elemento que coincida con el index, el cual corresponde a cada elemento de la lista de cartas */}
                 <button
                   onClick={() => setCards(() => cards.toSpliced(index, 1))}
-                  className="btn btn-outline-danger"
+                  className="btn btn-outline"
                 >
                   Eliminar de la lista
                 </button>
