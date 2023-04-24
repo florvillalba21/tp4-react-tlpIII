@@ -6,7 +6,6 @@ function App() {
   //donde almacenaremos los datos de las cartas de Yugioh
   const [cards, setCards] = useState([]);
 
-
   //funcion que se ejecuta al clickear el boton principal, este realiza la peticion a la api
   const getCards = async () => {
     const res = await fetch(
@@ -18,19 +17,25 @@ function App() {
     setCards(resJS.data.slice(0, 10));
   };
 
+  if (cards.length > 0) {
+    return (
+      <>
+        {/* se provee las cards y el setCards al componente CardYugioh para setear el estado desde alli */}
+        <CardContext.Provider value={{ cards, setCards }}>
+          <CardYugioh />
+        </CardContext.Provider>
+      </>
+    );
+  }
   return (
-    <div className="App">
+    <>
       {/* boton principal que ejecuta la funcion getCards */}
       <div id="btnGet" className="d-grid gap-2">
-        <button id="btn" onClick={getCards}>Traer cartas</button>
+        <button id="btn" onClick={getCards}>
+          Traer cartas
+        </button>
       </div>
-
-              {/* se provee las cards y el setCards al componente CardYugioh para setear el estado desde alli */}
-              <CardContext.Provider value={{ cards, setCards }}>
-                <CardYugioh/>
-              </CardContext.Provider>
-    
-    </div>
+    </>
   );
 }
 
